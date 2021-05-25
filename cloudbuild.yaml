@@ -1,12 +1,12 @@
 steps:
-#  - name: gcr.io/k8s-skaffold/pack
-#    args:
-#      - build
-#      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
-#      - '--builder=gcr.io/buildpacks/builder:v1'
-#      - '--path=.'
-#    id: Buildpack
-#    entrypoint: pack
+  - name: gcr.io/k8s-skaffold/pack
+    args:
+      - build
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+      - '--builder=gcr.io/buildpacks/builder:v1'
+      - '--path=.'
+    id: Buildpack
+    entrypoint: pack
   - name: gcr.io/cloud-builders/docker
     args:
       - push
@@ -33,7 +33,7 @@ options:
 substitutions:
   _TRIGGER_ID: 0ec64bf9-f620-49ea-818f-ce91fd766f3c
   _DEPLOY_REGION: asia-northeast3
-  _GCR_HOSTNAME: asia.gcr.io
+  _GCR_HOSTNAME: gcr.io
   _PLATFORM: managed
   _SERVICE_NAME: cloud-run-test
   _LABELS: gcb-trigger-id=0ec64bf9-f620-49ea-818f-ce91fd766f3c
